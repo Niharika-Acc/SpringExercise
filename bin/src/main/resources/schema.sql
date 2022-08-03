@@ -1,1 +1,0 @@
-create table employee(empId serial primary key,empName varchar(255), empExp number(10));
