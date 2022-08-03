@@ -1,0 +1,1 @@
+insert into employee values(1, 'Niharika', 2)
