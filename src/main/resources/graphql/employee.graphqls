@@ -4,13 +4,13 @@ type Query{
 }
 
 type Mutation {
-	addEmployee(empName: String, empExp: ID) : Employee
+	addEmployee(empName: String!, empExp: ID!) : Employee
 	deleteEmpById(id:ID) : Employee
 	updateEmployee(input: EmployeeInput) : Employee
 }
 
 type Employee{
-	empId : ID!
+	empId : ID
 	empName: String
 	empExp: ID
 }
