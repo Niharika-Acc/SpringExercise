@@ -9,6 +9,10 @@ import org.springframework.stereotype.Service;
 import com.example.demo.entity.Employee;
 import com.example.demo.repository.EmployeeRepository;
 
+/**
+ * @author n.sai.surya.yalla
+ * Service class for Employee API's to perform operations in Database
+ */
 @Service
 public class EmployeeService {
 	

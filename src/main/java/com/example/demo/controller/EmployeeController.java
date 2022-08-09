@@ -6,30 +6,40 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.example.demo.entity.Employee;
 import com.example.demo.entity.EmployeeInput;
 import com.example.demo.service.EmployeeService;
 
 
 
-@Controller
+/**
+ * @author n.sai.surya.yalla
+ * Controller class for Employee API's
+ */
+
+@RestController
+@RequestMapping("/rest/employee")
 public class EmployeeController {
 	
 	@Autowired
 	EmployeeService empService;
 	
 	
-	
 	@QueryMapping
-	public List<Employee> allEmployees() {
+	@PostMapping
+	public List<Employee>  allEmployees() {
 		return empService.getEmployees();
+		
 	}
 	
 	@QueryMapping
 	public Employee getEmpById(@Argument Integer id) {
-	return empService.getEmployeeById(id);
-} 
+		return empService.getEmployeeById(id);
+	} 
 	
 	
 	@MutationMapping
@@ -49,8 +59,8 @@ public class EmployeeController {
 	@MutationMapping
 	public Employee updateEmployee(@Argument EmployeeInput input) {
 		Employee emp = new Employee(input.getEmpId(),input.getEmpName(),input.getEmpExp());
-		System.out.println(emp);
 		return empService.updateEmployeeById(emp);
 	}
+	
 	
 }
